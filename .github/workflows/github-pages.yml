@@ -1,4 +1,4 @@
-name: Github Pages
+name: GitHub Pages
 
 on:
   push:
@@ -32,10 +32,11 @@ jobs:
           pnpm i
           pnpm build
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VITE_API_BASE_URL: ${{ secrets.VITE_API_BASE_URL }}
 
       - name: Deploy Site
         uses: peaceiris/actions-gh-pages@v3
         if: ${{ github.ref == 'refs/heads/main' }}
         with:
+          github_token: ${{ secrets.TOKEN_GITHUB }}
           publish_dir: ./dist
